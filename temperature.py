@@ -15,7 +15,7 @@ class temperature:
                     temperature_string = subtract[2:-1]
                     temperature = int(temperature_string)/1000
 
-                    return temp
+                    return temperature
 
     def read_temperature_humidity_sensor(self):
         sensor = Adafruit_DHT.DHT11
