@@ -1,3 +1,5 @@
+import Adafruit_DHT
+
 class temperature:
 
     def read_one_wire_temperature(sensor_address):
@@ -12,4 +14,11 @@ class temperature:
 
                     return temp
 
-    def read_temperature_humidity_sensor():
+    def read_temperature_humidity_sensor(GPIO_pin):
+        sensor = Adafruit_DHT.DHT11
+        # pin = 17
+        try:
+            humidity, temperature = Adafruit_DHT.read_retry(sensor, GPIO_pin)
+            return {temperature: '{0:0.1f}*C'.format(temperature), humidity: '{0:0.1f}*%'.format(humidity) }
+        except:
+            raise ValueError('Failed to get reading')
