@@ -29,7 +29,7 @@ class temperature:
         try:
             humidity, temperature = Adafruit_DHT.read_retry(sensor, self.temperature_humidity_sensor_pin)
             if (humidity and temperature):
-                return {'temperature': '{0:0.1f}C'.format(temperature), 'humidity': '{0:0.1f}%'.format(humidity)}
+                return {'temperature': temperature, 'humidity': humidity}
             else:
                 raise ValueError('Failed to get reading')
         except ValueError as ve:

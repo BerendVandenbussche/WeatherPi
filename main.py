@@ -22,6 +22,5 @@ def get_humidity():
     if (request.method == 'GET'):
         return jsonify(temperature.read_temperature_humidity_sensor().get('humidity'))
 
-
 if __name__ == '__main__':
     Flask.run(app, host="0.0.0.0", port=5500)
