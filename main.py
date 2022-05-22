@@ -24,4 +24,4 @@ def get_humidity():
 
 
 if __name__ == '__main__':
-    flask.run(app, host="0.0.0.0", port=5500)
+    Flask.run(app, host="0.0.0.0", port=5500)
