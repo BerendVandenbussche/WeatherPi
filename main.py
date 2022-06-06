@@ -1,5 +1,6 @@
 from temperature import temperature
 from rain import rain
+from wind import wind
 from flask import Flask, jsonify, request, url_for, json
 from flask_cors import CORS
 
@@ -8,6 +9,7 @@ CORS(app)
 endpoint = '/api/v1'
 temperature = temperature(27, '28-00000aee38a9')
 rain = rain(21, 0.2794)
+wind = wind(13)
 
 
 @app.route(endpoint + '/pool/temperature', methods=['GET'])
@@ -54,6 +56,18 @@ def get_rain():
 
 @app.route(endpoint + '/weather/rain/history', methods=['GET'])
 def get_rain_history():
+    if (request.method == 'GET'):
+        return jsonify('Endpoint not implemented')
+
+
+@app.route(endpoint + '/weather/wind', methods=['GET'])
+def get_wind_speed():
+    if (request.method == 'GET'):
+        return jsonify(wind.wind_speed)
+
+
+@app.route(endpoint + '/weather/wind/history', methods=['GET'])
+def get_wind_speed():
     if (request.method == 'GET'):
         return jsonify('Endpoint not implemented')
 
