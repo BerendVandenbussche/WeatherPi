@@ -67,7 +67,7 @@ def get_wind_speed():
 
 
 @app.route(endpoint + '/weather/wind/history', methods=['GET'])
-def get_wind_speed():
+def get_wind_speed_history():
     if (request.method == 'GET'):
         return jsonify('Endpoint not implemented')
 
