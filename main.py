@@ -51,7 +51,7 @@ def get_humidity_history():
 @app.route(endpoint + '/weather/rain', methods=['GET'])
 def get_rain():
     if (request.method == 'GET'):
-        return jsonify(rain.rain_amount)
+        return jsonify(rain.mm_per_hour)
 
 
 @app.route(endpoint + '/weather/rain/history', methods=['GET'])
