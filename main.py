@@ -1,6 +1,7 @@
 from temperature import temperature
 from rain import rain
 from wind import wind
+from solar_charging import solar_charging
 from flask import Flask, jsonify, request, url_for, json
 from flask_cors import CORS
 

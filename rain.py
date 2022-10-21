@@ -9,11 +9,14 @@ class rain:
         self.bucket_tips = 0
         self.mm_per_hour = 0
         self.loop_interval = 5
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(rain_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.rain_pin, GPIO.FALLING, callback=self.bucket_tipped)
-        scheduler.add_job(self._calculate_mm_per_hour, 'interval', minutes=self.loop_interval)
-        scheduler.start()
+        try:
+            GPIO.setmode(GPIO.BCM)
+            GPIO.setup(rain_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.add_event_detect(self.rain_pin, GPIO.FALLING, callback=self.bucket_tipped)
+            scheduler.add_job(self._calculate_mm_per_hour, 'interval', minutes=self.loop_interval)
+            scheduler.start()
+        except:
+            print('Error while setting up GPIO for rain measurements')
 
     
     def _calculate_mm_per_hour(self):
