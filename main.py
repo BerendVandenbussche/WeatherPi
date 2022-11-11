@@ -11,6 +11,7 @@ endpoint = '/api/v1'
 temperature = temperature(27, '28-00000aee38a9')
 rain = rain(21, 0.2794)
 wind = wind(13)
+charge = solar_charging()
 
 
 @app.route(endpoint + '/pool/temperature', methods=['GET'])
@@ -72,6 +73,17 @@ def get_wind_speed_history():
     if (request.method == 'GET'):
         return jsonify('Endpoint not implemented')
 
+
+@app.route(endpoint + '/status', methods=['GET'])
+def get_weather_station_status():
+    if (request.method == 'GET'):
+        return charge.get_status()
+
+
+@app.route(endpoint + '/status/battery', methods=['GET'])
+def get_weather_station_battery_status():
+    if (request.method == 'GET'):
+        return charge.get_battery_percentage()
 
 
 if __name__ == '__main__':

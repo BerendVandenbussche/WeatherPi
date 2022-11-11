@@ -5,7 +5,7 @@ class solar_charging:
         self.pijuice = PiJuice(1, 0x14)
 
     def get_status(self):
-        return self.pijuice.status.GetStatus()
+        return self.pijuice.status.GetStatus().get('data')
 
     def get_battery_percentage(self):
-        return self.pijuice.status.GetChargeLevel()
+        return self.pijuice.status.GetChargeLevel().get('data')
