@@ -1,6 +1,7 @@
 ## How to install
 ```
 pip install -r requirements.txt
+apt install pijuice-base
 ```
 
 ## Database
