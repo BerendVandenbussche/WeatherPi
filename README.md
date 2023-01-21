@@ -2,6 +2,7 @@
 ```
 pip install -r requirements.txt
 apt install pijuice-base
+apt install sqlite3
 ```
 
 ## Database
