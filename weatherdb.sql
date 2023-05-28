@@ -1,0 +1,59 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Humidity" (
+	"HumidityID"	INTEGER,
+	"HumiditySensor"	TEXT NOT NULL,
+	"Humidity"	INTEGER NOT NULL,
+	"HumidityUnit"	TEXT NOT NULL,
+	PRIMARY KEY("HumidityID" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "Rain" (
+	"RainID"	INTEGER,
+	"RainSensor"	TEXT NOT NULL,
+	"Rain"	INTEGER NOT NULL,
+	"RainUnit"	TEXT NOT NULL,
+	PRIMARY KEY("RainID" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "Temperature" (
+	"TemperatureID"	INTEGER,
+	"TemperatureSensor"	TEXT NOT NULL,
+	"Temperature"	INTEGER NOT NULL,
+	"TemperatureUnit"	TEXT DEFAULT Celcius,
+	PRIMARY KEY("TemperatureID" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "Wind" (
+	"WindID"	INTEGER,
+	"WindDirection"	TEXT NOT NULL,
+	"WindSpeed"	INTEGER NOT NULL,
+	"WindSpeedUnit"	TEXT DEFAULT 'km/h',
+	PRIMARY KEY("WindID" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "System" (
+	"SystemID"	INTEGER,
+	"BatteryPercentage"	INTEGER NOT NULL,
+	"Status"	TEXT NOT NULL,
+	PRIMARY KEY("SystemID" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "Location" (
+	"LocationID"	INTEGER,
+	"Longitude"	REAL NOT NULL,
+	"Latitude"	REAL NOT NULL,
+	"SystemID"	INTEGER NOT NULL,
+	FOREIGN KEY("SystemID") REFERENCES "System"("SystemID"),
+	PRIMARY KEY("LocationID" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "Weather" (
+	"WeatherId"	INTEGER,
+	"LocationId"	INTEGER NOT NULL,
+	"Timestamp"	DATETIME NOT NULL DEFAULT 'datetime()',
+	"TemperatureID"	INTEGER NOT NULL,
+	"HumidityID"	INTEGER NOT NULL,
+	"RainID"	INTEGER NOT NULL,
+	"WindID"	INTEGER NOT NULL,
+	FOREIGN KEY("LocationId") REFERENCES "Location"("LocationID"),
+	FOREIGN KEY("TemperatureID") REFERENCES "Temperature"("TemperatureID"),
+	FOREIGN KEY("WindID") REFERENCES "Wind"("WindID"),
+	FOREIGN KEY("HumidityID") REFERENCES "Humidity"("HumidityID"),
+	FOREIGN KEY("RainID") REFERENCES "Rain"("RainID"),
+	PRIMARY KEY("WeatherId" AUTOINCREMENT)
+);
+COMMIT;
