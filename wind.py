@@ -17,10 +17,6 @@ class wind:
             GPIO.setup(self.anemometer_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
             GPIO.add_event_detect(self.anemometer_pin, GPIO.FALLING, callback=self.register_spin)
             scheduler.add_job(self._calculate_wind_speed, 'interval', seconds=self.loop_interval)
-<<<<<<< Updated upstream
-=======
-            self._get_wind_direction()
->>>>>>> Stashed changes
             scheduler.start()
         except:
             print('Error while setting up GPIO for wind measurements')
@@ -46,16 +42,4 @@ class wind:
 
 
     def _get_wind_direction(self):
-<<<<<<< Updated upstream
         pass
-=======
-        count = 0
-        values = []
-        while True:
-            wind = round(self.adc.value*3.3,1)
-            if not wind in values:
-                values.append(wind)
-                count+=1
-                print(count)
-        
->>>>>>> Stashed changes
