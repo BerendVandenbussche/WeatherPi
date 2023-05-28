@@ -12,6 +12,8 @@ apt install sqlite3
 
 ### Database dump
 
+*[Dump file](https://github.com/BerendVandenbussche/WeatherPi/blob/master/weatherdb.sql)*
+
 ## How to run
 
 Run the backend
