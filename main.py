@@ -77,13 +77,13 @@ def get_wind_speed_history():
 @app.route(endpoint + '/status', methods=['GET'])
 def get_weather_station_status():
     if (request.method == 'GET'):
-        return charge.get_status()
+        return jsonify(charge.get_status())
 
 
 @app.route(endpoint + '/status/battery', methods=['GET'])
 def get_weather_station_battery_status():
     if (request.method == 'GET'):
-        return charge.get_battery_percentage()
+        return jsonify(charge.get_battery_percentage())
 
 
 if __name__ == '__main__':
