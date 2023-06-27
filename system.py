@@ -1,6 +1,6 @@
 from pijuice import PiJuice
 
-class solar_charging:
+class system:
     def __init__(self):
         self.pijuice = PiJuice(1, 0x14)
 
