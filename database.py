@@ -12,7 +12,7 @@ class database:
         return data.fetchall()
 
 
-    def set_data(self):
+    def set_data(self, query):
         data = self.cursor.execute(query)
         self.database.commit()
         return data.fetchall()
