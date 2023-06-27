@@ -12,9 +12,9 @@ app = Flask(__name__)
 CORS(app)
 load_dotenv()
 endpoint = '/api/v1'
-temperature = temperature(os.getenv('DHT11SENSORPIN'), os.getenv('ONEWIRESENSORADDRESS'))
-rain = rain(os.getenv('PLUVIOPIN'), os.getenv('PLUVIOSIZE'))
-wind = wind(os.getenv('ANEMOPIN'))
+temperature = temperature(int(os.getenv('DHT11SENSORPIN')), os.getenv('ONEWIRESENSORADDRESS'))
+rain = rain(int(os.getenv('PLUVIOPIN')), float(os.getenv('PLUVIOSIZE')))
+wind = wind(int(os.getenv('ANEMOPIN')))
 system = system()
 db = database(os.getenv('DBFILENAME'))
 
