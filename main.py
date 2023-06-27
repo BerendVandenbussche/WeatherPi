@@ -1,7 +1,7 @@
 from temperature import temperature
 from rain import rain
 from wind import wind
-from solar_charging import solar_charging
+from system import system
 from flask import Flask, jsonify, request, url_for, json
 from flask_cors import CORS
 
@@ -11,7 +11,7 @@ endpoint = '/api/v1'
 temperature = temperature(27, '28-00000aee38a9')
 rain = rain(21, 0.2794)
 wind = wind(13)
-charge = solar_charging()
+system = system()
 
 
 @app.route(endpoint + '/pool/temperature', methods=['GET'])
@@ -77,13 +77,13 @@ def get_wind_speed_history():
 @app.route(endpoint + '/status', methods=['GET'])
 def get_weather_station_status():
     if (request.method == 'GET'):
-        return jsonify(charge.get_status())
+        return jsonify(system.get_status())
 
 
 @app.route(endpoint + '/status/battery', methods=['GET'])
 def get_weather_station_battery_status():
     if (request.method == 'GET'):
-        return jsonify(charge.get_battery_percentage())
+        return jsonify(system.get_battery_percentage())
 
 
 if __name__ == '__main__':
