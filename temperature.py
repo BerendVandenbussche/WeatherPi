@@ -6,9 +6,6 @@ class temperature:
         self.temperature_humidity_sensor_pin = temperature_humidity_sensor_pin
         self.W1_sensor_address = W1_sensor_address
 
-    def _convert_to_fahrenheit(temperature):
-        return temperature * 1.8 + 32
-
     def read_one_wire_temperature(self):
         try:
             if (self.W1_sensor_address):
