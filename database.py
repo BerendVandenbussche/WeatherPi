@@ -3,7 +3,7 @@ import sqlite3
 class database:
     def __init__(self, database_file):
         self.database = sqlite3.connect(database_file)
-        self.cursor = database.cursor()
+        self.cursor = self.database.cursor()
         print('Succesfully connected to database with name {0}!'.format(database_file))
 
     
