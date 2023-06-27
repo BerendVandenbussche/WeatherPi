@@ -240,3 +240,6 @@ fabric.properties
 
 # Database stuff
 .db
+
+# Certs
+cert/
