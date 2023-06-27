@@ -85,6 +85,12 @@ def get_weather_station_battery_status():
     if (request.method == 'GET'):
         return jsonify(system.get_battery_percentage())
 
+    
+@app.route(endpoint + '/status/uptime', methods=['GET'])
+def get_weather_station_uptime():
+    if (request.method == "GET"):
+        return jsonify(system.get_system_uptime())
+
 
 if __name__ == '__main__':
     Flask.run(app, host="0.0.0.0", port=5500)

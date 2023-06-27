@@ -1,4 +1,5 @@
 from pijuice import PiJuice
+import subprocess
 
 class system:
     def __init__(self):
@@ -7,5 +8,10 @@ class system:
     def get_status(self):
         return self.pijuice.status.GetStatus().get('data')
 
+
     def get_battery_percentage(self):
         return self.pijuice.status.GetChargeLevel().get('data')
+
+
+    def get_system_uptime(self):
+        return subprocess.check_output(["uptime"])
