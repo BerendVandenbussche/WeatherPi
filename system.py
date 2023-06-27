@@ -14,4 +14,4 @@ class system:
 
 
     def get_system_uptime(self):
-        return subprocess.check_output(["uptime"])
+        return subprocess.run(['uptime'], stdout=subprocess.PIPE).stdout.decode('utf-8').strip('\n')
