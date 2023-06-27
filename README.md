@@ -5,6 +5,18 @@ apt install pijuice-base
 apt install sqlite3
 ```
 
+## Add .env file
+Example `.env`:
+
+```
+DBFILENAME="weatherdb.sql"
+ONEWIRESENSORADDRESS="28-00000aee38a9"
+DHT11SENSORPIN=27
+PLUVIOPIN=21
+PLUVIOSIZE=0.2794
+ANEMOPIN=13
+```
+
 ## Database
 `sqlite` database with the following structure:
 

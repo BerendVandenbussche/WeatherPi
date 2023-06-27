@@ -2,16 +2,21 @@ from temperature import temperature
 from rain import rain
 from wind import wind
 from system import system
+from database import database
 from flask import Flask, jsonify, request, url_for, json
 from flask_cors import CORS
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 CORS(app)
+load_dotenv()
 endpoint = '/api/v1'
-temperature = temperature(27, '28-00000aee38a9')
-rain = rain(21, 0.2794)
-wind = wind(13)
+temperature = temperature(os.getenv('DHT11SENSORPIN'), os.getenv('ONEWIRESENSORADDRESS'))
+rain = rain(os.getenv('PLUVIOPIN'), os.getenv('PLUVIOSIZE'))
+wind = wind(os.getenv('ANEMOPIN'))
 system = system()
+db = database(os.getenv('DBFILENAME'))
 
 
 @app.route(endpoint + '/pool/temperature', methods=['GET'])
