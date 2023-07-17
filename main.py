@@ -79,6 +79,18 @@ def get_wind_speed_history():
         return jsonify('Endpoint not implemented')
 
 
+@app.route(endpoint + '/weather/wind/direction', methods=['GET'])
+def get_wind_direction():
+    if (request.method == 'GET'):
+        return jsonify('Endpoint not implemented')
+
+
+@app.route(endpoint + '/weather/wind/direction/history', methods=['GET'])
+def get_wind_direction_history():
+    if (request.method == 'GET'):
+        return jsonify('Endpoint not implemented')
+
+
 @app.route(endpoint + '/system/status', methods=['GET'])
 def get_weather_station_status():
     if (request.method == 'GET'):
