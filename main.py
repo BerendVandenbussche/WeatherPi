@@ -67,31 +67,31 @@ def get_rain_history():
         return jsonify('Endpoint not implemented')
 
 
-@app.route(endpoint + '/weather/wind', methods=['GET'])
+@app.route(endpoint + '/weather/wind/speed', methods=['GET'])
 def get_wind_speed():
     if (request.method == 'GET'):
         return jsonify(wind.wind_speed)
 
 
-@app.route(endpoint + '/weather/wind/history', methods=['GET'])
+@app.route(endpoint + '/weather/wind/speed/history', methods=['GET'])
 def get_wind_speed_history():
     if (request.method == 'GET'):
         return jsonify('Endpoint not implemented')
 
 
-@app.route(endpoint + '/status', methods=['GET'])
+@app.route(endpoint + '/system/status', methods=['GET'])
 def get_weather_station_status():
     if (request.method == 'GET'):
         return jsonify(system.get_status())
 
 
-@app.route(endpoint + '/status/battery', methods=['GET'])
+@app.route(endpoint + '/system/battery', methods=['GET'])
 def get_weather_station_battery_status():
     if (request.method == 'GET'):
         return jsonify(system.get_battery_percentage())
 
     
-@app.route(endpoint + '/status/uptime', methods=['GET'])
+@app.route(endpoint + '/system/uptime', methods=['GET'])
 def get_weather_station_uptime():
     if (request.method == "GET"):
         return jsonify(system.get_system_uptime())
