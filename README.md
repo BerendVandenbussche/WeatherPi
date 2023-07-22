@@ -33,5 +33,5 @@ ANEMOPIN=13
 Run the backend
 
 ```
-gunicorn -w 4 -b 0.0.0.0:5500 wsgi:app
+gunicorn -b 0.0.0.0:5500 wsgi:app
 ```
