@@ -15,7 +15,7 @@ endpoint = '/api/v1'
 db = database(os.getenv('DBFILENAME'))
 temperature = temperature(int(os.getenv('DHT11SENSORPIN')), os.getenv('ONEWIRESENSORADDRESS'))
 rain = rain(int(os.getenv('PLUVIOPIN')), float(os.getenv('PLUVIOSIZE')))
-wind = wind(db, int(os.getenv('ANEMOPIN')))
+wind = wind(int(os.getenv('ANEMOPIN')))
 system = system()
 
 

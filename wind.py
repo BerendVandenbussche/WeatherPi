@@ -1,10 +1,11 @@
 import RPi.GPIO as GPIO
 from gpiozero import MCP3008
+from database import database
 import math
 from apscheduler.schedulers.background import BackgroundScheduler
 
 class wind:
-    def __init__(self, database, anemometer_pin=None, anemometer_radius_cm = 9.0):
+    def __init__(self, anemometer_pin=None, anemometer_radius_cm = 9.0):
         scheduler = BackgroundScheduler()
         self.anemometer_pin = anemometer_pin
         self.anemometer_radius_cm = anemometer_radius_cm
@@ -12,7 +13,6 @@ class wind:
         self.spin_amount = 0
         self.loop_interval = 5
         self.wind_speed = None
-        self.database = database
         try:
             GPIO.setmode(GPIO.BCM)
             GPIO.setup(self.anemometer_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -48,4 +48,4 @@ class wind:
 
 
     def _write_wind_to_db(self):
-        self.database.set_data('INSERT INTO wind VALUES ({0}, {1}, {2}, {3})'.format(None, None, self.wind_speed, 'km/h'))
+        database().set_data('INSERT INTO wind VALUES ({0}, {1}, {2}, {3})'.format(None, None, self.wind_speed, 'km/h'))
