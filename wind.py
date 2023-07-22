@@ -5,8 +5,9 @@ import math
 from apscheduler.schedulers.background import BackgroundScheduler
 
 class wind:
-    def __init__(self, anemometer_pin=None, anemometer_radius_cm = 9.0):
+    def __init__(self, db_file, anemometer_pin=None, anemometer_radius_cm = 9.0):
         scheduler = BackgroundScheduler()
+        self.db_file = db_file
         self.anemometer_pin = anemometer_pin
         self.anemometer_radius_cm = anemometer_radius_cm
         self.adc = MCP3008(channel=0)
@@ -48,4 +49,4 @@ class wind:
 
 
     def _write_wind_to_db(self):
-        database().set_data('INSERT INTO wind VALUES ({0}, {1}, {2}, {3})'.format(None, None, self.wind_speed, 'km/h'))
+        database(self.db_file).set_data('INSERT INTO wind VALUES ({0}, {1}, {2}, {3})'.format(None, None, self.wind_speed, 'km/h'))
